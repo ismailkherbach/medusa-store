@@ -10,8 +10,6 @@ const Layout = ({ children }) => {
 
   return (
     <div className={cartView ? styles.noscroll : null}>
-      <CartView />
-      <Blur />
       <NavBar />
       <main>{children}</main>
     </div>

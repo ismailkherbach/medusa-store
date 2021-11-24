@@ -1,0 +1,254 @@
+@import "./colors.scss";
+@import "./mixins";
+@import "./fonts.scss";
+.medusa-main-container {
+  width: 100%;
+  height: unset;
+
+  padding-top: 45px;
+}
+.medusa-product-container {
+  width: 100%;
+  height: calc(100vh - 45px);
+  padding: 0;
+  padding-top: 45px;
+}
+.products-main {
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  flex-wrap: wrap;
+  .product-card {
+    width: 24%;
+    height: 315px;
+    max-height: 315px;
+    position: relative;
+    background-color: #f7f7fa;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin-right: calc((100% - 4 * 24%) / 4);
+    margin-bottom: calc((100% - 4 * 24%) / 4);
+    .product-picture {
+      width: 100%;
+      height: 95%;
+      min-height: 95%;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: contain;
+      }
+    }
+    .product-infos {
+      width: 100%;
+      height: 15%;
+      h2 {
+        font-size: 16px;
+        font-weight: 400;
+        width: 75%;
+        text-align: left;
+        color: #0a3149;
+        max-width: 75%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        white-space: nowrap;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        width: 15%;
+        text-align: left;
+      }
+    }
+    @include desktop-mobile {
+      width: 100%;
+      //  margin-right: calc((100% - 4 * 48.5%) / 2);
+    }
+    @include desktop-tablet {
+      width: 48.5%;
+      //   margin-right: calc((100% - 4 * 48.5%) / 2);
+    }
+  }
+}
+.product-details {
+  width: 100%;
+  position: relative;
+  flex-wrap: wrap;
+  height: 100%;
+  padding: 0;
+  @include desktop-xl {
+    padding: 0 10%;
+  }
+
+  figure {
+    padding: 0;
+    margin: 0;
+  }
+  .p-image {
+    width: 50%;
+    height: calc(100vh - 45px);
+    padding: 0;
+
+    position: relative;
+
+    @include desktop-mobile {
+      width: 100%;
+    }
+    @include desktop-tablet {
+      width: 100%;
+    }
+  }
+  .p-infos {
+    width: 50%;
+    height: unset;
+    padding: 0 10%;
+    @include desktop-mobile {
+      padding: 5%;
+    }
+    @include desktop-tablet {
+      padding: 5%;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: left;
+      width: 100%;
+      padding: 0;
+      margin: 4px 0;
+    }
+    .colors-main {
+      width: 100%;
+      .color {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid black;
+        margin-right: 4px;
+      }
+    }
+    select {
+      width: 100%;
+      min-width: 100%;
+      height: 35px;
+      border: 1px solid #0a3149;
+      border-radius: 5px;
+      outline: none;
+      margin-top: 15px;
+      padding: 4px;
+    }
+    button {
+      width: 100%;
+      height: 35px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      margin: 15px 0;
+      padding: 4px;
+      background-color: #0a3149;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 18px;
+      color: #ffffff;
+    }
+    .product-details-drop {
+      width: 100%;
+      p {
+        width: 95%;
+      }
+      .arrow {
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+      }
+      .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    }
+
+    @include desktop-mobile {
+      width: 100%;
+    }
+    @include desktop-tablet {
+      width: 100%;
+    }
+  }
+}
+.navbar {
+  width: 100%;
+  height: 45px;
+  position: absolute;
+  z-index: 10;
+  padding: 0 15px;
+  @include desktop-xl {
+    padding: 0 10%;
+  }
+
+  a {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+}
+.flex {
+  display: flex;
+}
+.fdc {
+  flex-direction: column;
+}
+.fdcr {
+  flex-direction: column-reverse;
+}
+.fdr {
+  flex-direction: row;
+}
+.fdrr {
+  flex-direction: row-reverse;
+}
+.jcc {
+  justify-content: center;
+}
+.jcfs {
+  justify-content: flex-start;
+}
+.jcfe {
+  justify-content: flex-end;
+}
+.jcsb {
+  justify-content: space-between;
+}
+.jcsa {
+  justify-content: space-around;
+}
+.jcse {
+  justify-content: space-evenly;
+}
+.aic {
+  align-items: center;
+}
+.aifs {
+  align-items: flex-start;
+}
+.aife {
+  align-items: flex-end;
+}
+.ais {
+  align-items: stretch;
+}
+.aib {
+  align-items: baseline;
+}
+.fww {
+  flex-wrap: wrap;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.wb-100 {
+  width: 100%;
+}

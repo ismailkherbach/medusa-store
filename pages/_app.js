@@ -2,6 +2,7 @@ import Head from "next/head";
 import { StoreProvider } from "../context/store-context";
 import { DisplayProvider } from "../context/display-context";
 import "../styles/globals.css";
+import "../styles/medusa.main.scss";
 import Layout from "../components/layout/layout";
 
 function MyApp({ Component, pageProps }) {

@@ -1,0 +1,117 @@
+// Mixin to prefix several properties at once
+// @author Hugo Giraudel
+// @param {Map} $declarations - Declarations to prefix
+// @param {List} $prefixes (()) - List of prefixes to print
+
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+  }
+}
+
+// Gives a card depth effect.
+// @param {Number} $depth - depth level (between 1 and 5)
+// @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+// @requires {function} top-shadow
+// @requires {function} bottom-shadow
+@mixin depth($depth) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn "Invalid $depth `#{$depth}` for mixin `card`.";
+  } @else {
+    box-shadow: bottom-shadow($depth), top-shadow($depth);
+  }
+}
+
+// Computes a top-shadow for a card effect.
+// @param {Number} $depth - depth level
+// @return {List}
+
+@function top-shadow($depth) {
+  $primary-offset: nth($shadowOffsetsTop, $depth) * 1px;
+  $blur: nth($shadowBlursTop, $depth) * 4px;
+  $color: rgba(black, nth($shadowOpacitiesTop, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}
+
+// Computes a bottom-shadow for a card effect.
+// @param {Number} $depth - depth level
+// @return {List}
+@function bottom-shadow($depth) {
+  $primary-offset: nth($shadowOffsetsBottom, $depth) * 1px;
+  $blur: nth($shadowBlursBottom, $depth) * 5px;
+  $color: rgba(black, nth($shadowOpacitiesBottom, $depth));
+  @return 0 $primary-offset $blur $color;
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+//Responsive Breakpoints
+
+$breakpoints: (
+  sm: 1281px,
+  md: 1366px,
+  lg: 1441px,
+  xl: 1920px,
+);
+
+@mixin desktop-mobile {
+  @media (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}
+@mixin desktop-tablet {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop-xs {
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media (min-width: 1280px) and (max-width: 1365px) {
+    @content;
+  }
+}
+
+@mixin desktop-md {
+  @media (min-width: 1366px) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media (min-width: 1920px) {
+    @content;
+  }
+}
+
+@function encodecolor($string) {
+  @if type-of($string) == "color" {
+    $hex: str-slice(ie-hex-str($string), 4);
+    $string: unquote("#{$hex}");
+  }
+  $string: "%23" + $string;
+  @return $string;
+}
